@@ -16,6 +16,8 @@ namespace Nop.Core.Data
             RawDataSettings=new Dictionary<string, string>();
         }
 
+        public static DataSettings Current => new DataSettingsManager().LoadSettings();
+
         /// <summary>
         /// Data provider
         /// </summary>

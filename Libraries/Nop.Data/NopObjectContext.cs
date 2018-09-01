@@ -5,7 +5,8 @@ using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Reflection; 
+using System.Reflection;
+using Nop.Core.Data;
 using Nop.Data.Mapping;
 using Nop.Domain;
 namespace Nop.Data
@@ -16,6 +17,15 @@ namespace Nop.Data
     public class NopObjectContext : DbContext, IDbContext
     {
         #region Ctor
+        public NopObjectContext() : this(GetConnectionString())
+        {
+
+        }
+
+        private static string GetConnectionString()
+        {
+            return DataSettings.Current.DataConnectionString;
+        }
 
         public NopObjectContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
