@@ -306,11 +306,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\Nop.Core\Nop.Core.csproj">
-      <Project>{6BDA8332-939F-45B7-A25E-7A797260AE59}</Project>
+      <Project>{6bda8332-939f-45b7-a25e-7a797260ae59}</Project>
       <Name>Nop.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Libraries\Nop.Data\Nop.Data.csproj">
-      <Project>{CCD7F2C9-6A2C-4CF0-8E89-076B8FC0F144}</Project>
+      <Project>{ccd7f2c9-6a2c-4cf0-8e89-076b8fc0f144}</Project>
       <Name>Nop.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Libraries\Nop.Domain\Nop.Domain.csproj">

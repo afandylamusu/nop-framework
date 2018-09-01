@@ -28,13 +28,13 @@ namespace Nop.Web
                 LoginPath = new PathString("/Account/Login"),
                 Provider = new CookieAuthenticationProvider
                 {
-                    // 当用户登录时使应用程序可以验证安全戳。
-                    // 这是一项安全功能，当你更改密码或者向帐户添加外部登录名时，将使用此功能。
+                    // Enables the application to verify the security stamp when the user logs in.
+                    // This is a security feature that will be used when you change your password or add an external login to your account.
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // 使应用程序可以在双重身份验证过程中验证第二因素时暂时存储用户信息。
