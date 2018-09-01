@@ -46,6 +46,7 @@ namespace Nop.Domain.Logging
         /// <summary>
         /// Gets or sets the date and time of instance creation
         /// </summary>
+        [DateTimeKind(DateTimeKind.Utc)]
         public DateTime CreatedOnUtc { get; set; }
 
         /// <summary>

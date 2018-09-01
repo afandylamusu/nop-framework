@@ -48,6 +48,7 @@
     <Compile Include="Common\GenericAttribute.cs" />
     <Compile Include="Configuration\ISettings.cs" />
     <Compile Include="Configuration\Setting.cs" />
+    <Compile Include="DateTimeKindAttribute.cs" />
     <Compile Include="Localization\ILocalizedEntity.cs" />
     <Compile Include="Localization\ILocalizedEnum.cs" />
     <Compile Include="Localization\Language.cs" />

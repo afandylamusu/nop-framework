@@ -71,16 +71,19 @@ namespace Nop.Domain.Users
         /// <summary>
         /// Gets or sets the date and time of entity creation
         /// </summary>
+        [DateTimeKind(DateTimeKind.Utc)]
         public DateTime CreatedOnUtc { get; set; }
 
         /// <summary>
         /// Gets or sets the date and time of last login
         /// </summary>
+        [DateTimeKind(DateTimeKind.Utc)]
         public DateTime? LastLoginDateUtc { get; set; }
 
         /// <summary>
         /// Gets or sets the date and time of last activity
         /// </summary>
+        [DateTimeKind(DateTimeKind.Utc)]
         public DateTime LastActivityDateUtc { get; set; }
 
         #region Navigation properties
