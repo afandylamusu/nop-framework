@@ -1,9 +1,7 @@
 namespace Assesment.Data.Migrations
 {
-    using System;
-    using System.Data.Entity;
+    using Nop.Data.Initializers;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Assesment.Data.AssesmentDbContext>
     {
@@ -18,6 +16,8 @@ namespace Assesment.Data.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+
+            DataMaster.Initial(context);
         }
     }
 }

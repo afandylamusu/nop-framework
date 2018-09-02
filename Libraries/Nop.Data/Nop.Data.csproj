@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Initializers\CreateCeDatabaseIfNotExists.cs" />
     <Compile Include="Initializers\CreateTablesIfNotExist.cs" />
+    <Compile Include="Initializers\DataInitializer.cs" />
     <Compile Include="Initializers\DropCreateCeDatabaseAlways.cs" />
     <Compile Include="Initializers\DropCreateCeDatabaseIfModelChanges.cs" />
     <Compile Include="Initializers\SqlCeInitializer.cs" />

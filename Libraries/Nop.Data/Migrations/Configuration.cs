@@ -1,10 +1,7 @@
 namespace Nop.Data.Migrations
 {
-    using Nop.Domain.Users;
-    using System;
-    using System.Data.Entity;
+    using Nop.Data.Initializers;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Nop.Data.NopObjectContext>
     {
@@ -20,55 +17,7 @@ namespace Nop.Data.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-            var userRoleSet = context.Set<UserRole>();
-
-            if (!userRoleSet.Any())
-            {
-                userRoleSet.Add(new UserRole {
-                    Active = true,
-                    IsSystemRole = true,
-                    Name = SystemUserRoleNames.Administrators,
-                    SystemName = SystemUserRoleNames.Administrators,
-                    EnablePasswordLifetime = true
-                });
-
-                userRoleSet.Add(new UserRole
-                {
-                    Active = true,
-                    IsSystemRole = true,
-                    Name = SystemUserRoleNames.ForumModerators,
-                    SystemName = SystemUserRoleNames.ForumModerators,
-                    EnablePasswordLifetime = true
-                });
-
-                userRoleSet.Add(new UserRole
-                {
-                    Active = true,
-                    IsSystemRole = true,
-                    Name = SystemUserRoleNames.Registered,
-                    SystemName = SystemUserRoleNames.Registered,
-                    EnablePasswordLifetime = true
-                });
-
-                userRoleSet.Add(new UserRole
-                {
-                    Active = true,
-                    IsSystemRole = true,
-                    Name = SystemUserRoleNames.Vendors,
-                    SystemName = SystemUserRoleNames.Vendors,
-                    EnablePasswordLifetime = true
-                });
-
-                userRoleSet.Add(new UserRole
-                {
-                    Active = true,
-                    IsSystemRole = true,
-                    Name = SystemUserRoleNames.Guests,
-                    SystemName = SystemUserRoleNames.Guests,
-                    EnablePasswordLifetime = false
-                });
-            }
-
+            DataMaster.Initial(context);
         }
     }
 }
