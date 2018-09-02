@@ -64,8 +64,10 @@
     <Compile Include="ModuleModel\AssesmentModule.cs" />
     <Compile Include="ModuleModel\AssesmentModuleAggregate.cs" />
     <Compile Include="ModuleModel\Commands\CreateAssesmentModuleCommand.cs" />
+    <Compile Include="ModuleModel\Commands\UpdateAssesmentModuleCommand.cs" />
     <Compile Include="ModuleModel\Entities\Checklist.cs" />
     <Compile Include="ModuleModel\Entities\EvalPeriodType.cs" />
+    <Compile Include="ModuleModel\Events\OnAssesmentModuleUpdated.cs" />
     <Compile Include="ModuleModel\Events\OnModuleCreated.cs" />
     <Compile Include="ModuleModel\States\AssesmentModuleState.cs" />
     <Compile Include="ModuleModel\ValueObjects\DealerStatus.cs" />

@@ -6,12 +6,25 @@ using EventFlow.ReadStores;
 namespace Assesment.Queries.Module
 {
     public class AssesmentModuleReadModel : SqlReadModel,
-      IAmReadModelFor<AssesmentModuleAggregate, AssesmentModuleId, OnAssesmentModuleCreated>
+      IAmReadModelFor<AssesmentModuleAggregate, AssesmentModuleId, OnAssesmentModuleCreated>,
+      IAmReadModelFor<AssesmentModuleAggregate, AssesmentModuleId, OnAssesmentModuleUpdated>
+
     {
         public string Name { get; set; }
         public string Code { get; set; }
 
         public void Apply(IReadModelContext context, IDomainEvent<AssesmentModuleAggregate, AssesmentModuleId, OnAssesmentModuleCreated> domainEvent)
+        {
+            this.Name = domainEvent.AggregateEvent.AssesmentModule.Name.Value;
+            this.Code = domainEvent.AggregateEvent.AssesmentModule.Code.Value;
+
+            this.AggregateId = domainEvent.AggregateIdentity.Value;
+            this.CreatedTime = domainEvent.Timestamp;
+            this.CreatedBy = domainEvent.AggregateEvent.User;
+            this.LastAggregateSequenceNumber = domainEvent.AggregateSequenceNumber;
+        }
+
+        public void Apply(IReadModelContext context, IDomainEvent<AssesmentModuleAggregate, AssesmentModuleId, OnAssesmentModuleUpdated> domainEvent)
         {
             this.Name = domainEvent.AggregateEvent.AssesmentModule.Name.Value;
             this.Code = domainEvent.AggregateEvent.AssesmentModule.Code.Value;

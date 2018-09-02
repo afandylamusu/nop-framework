@@ -33,6 +33,12 @@ namespace Assesment.Domain.ModuleModel
             Emit(new OnAssesmentModuleCreated(new AssesmentModule(Id, name, code)) { User = _userEvent.User });
             return ExecutionResult.Success();
         }
+
+        internal IExecutionResult Update(Name name)
+        {
+            Emit(new OnAssesmentModuleUpdated(new AssesmentModule(Id, name, this.Code)) { User = _userEvent.User });
+            return ExecutionResult.Success();
+        }
     }
 
     

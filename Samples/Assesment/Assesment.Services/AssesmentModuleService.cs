@@ -10,6 +10,7 @@ namespace Assesment.Services
     public interface IAssesmentModuleService
     {
         Task<AssesmentModuleId> CreateModuleAsync(Name name, Code code, CancellationToken cancellationToken);
+        Task<AssesmentModuleId> EditModuleAsync(AssesmentModuleId id, Name name, CancellationToken cancellationToken);
     }
 
     public class AssesmentModuleService : IAssesmentModuleService
@@ -27,6 +28,12 @@ namespace Assesment.Services
 
             await _commandBus.PublishAsync(new CreateAssesmentModuleCommand(id, name, code), cancellationToken).ConfigureAwait(false);
 
+            return id;
+        }
+
+        public async Task<AssesmentModuleId> EditModuleAsync(AssesmentModuleId id, Name name, CancellationToken cancellationToken)
+        {
+            await _commandBus.PublishAsync(new UpdateAssesmentModuleCommand(id, name), cancellationToken).ConfigureAwait(false);
             return id;
         }
     }

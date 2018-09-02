@@ -9,12 +9,19 @@ using System.Threading.Tasks;
 namespace Assesment.Domain.ModuleModel.States
 {
     public class AssesmentModuleState : AggregateState<AssesmentModuleAggregate, AssesmentModuleId, AssesmentModuleState>,
-        IApply<OnAssesmentModuleCreated>
+        IApply<OnAssesmentModuleCreated>,
+        IApply<OnAssesmentModuleUpdated>
     {
         public Code Code { get; private set; }
         public Name ModuleName { get; private set; }
 
         public void Apply(OnAssesmentModuleCreated aggregateEvent)
+        {
+            Code = aggregateEvent.AssesmentModule.Code;
+            ModuleName = aggregateEvent.AssesmentModule.Name;
+        }
+
+        public void Apply(OnAssesmentModuleUpdated aggregateEvent)
         {
             Code = aggregateEvent.AssesmentModule.Code;
             ModuleName = aggregateEvent.AssesmentModule.Name;
