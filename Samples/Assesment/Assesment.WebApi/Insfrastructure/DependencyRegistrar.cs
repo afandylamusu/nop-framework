@@ -1,5 +1,10 @@
 ﻿using Autofac;
+using EventFlow;
+using EventFlow.Autofac.Extensions;
+using EventFlow.MsSql;
+using EventFlow.MsSql.Extensions;
 using Nop.Core.Configuration;
+using Nop.Core.Data;
 using Nop.Core.Infrastructure;
 using Nop.Core.Infrastructure.DependencyManagement;
 using System;
@@ -15,6 +20,13 @@ namespace Assesment.WebApi.Insfrastructure
 
         public void Register(ContainerBuilder builder, ITypeFinder typeFinder, NopConfig config)
         {
+            var resolver = EventFlowOptions.New
+                .UseAutofacContainerBuilder(builder)
+                //.PublishToRabbitMq(RabbitMqConfiguration.With(new Uri("amqp://moonlay:moonlay@192.168.99.100/")))
+                .ConfigureMsSql(MsSqlConfiguration.New.SetConnectionString(DataSettings.Current.DataConnectionString))
+                .UseMssqlEventStore()
+                .ConfigureAggregates()
+                .ConfigureReadModels();
         }
     }
 }

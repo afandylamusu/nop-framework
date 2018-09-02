@@ -54,12 +54,19 @@
     <Compile Include="AttributeModel\Entities\ScoreOption.cs" />
     <Compile Include="AttributeModel\ValueObjects\ScoreOptionRule.cs" />
     <Compile Include="AttributeModel\ValueObjects\ScoreOptionValue.cs" />
+    <Compile Include="BaseAggregateEvent.cs" />
     <Compile Include="DealerEvaluationModel\DealerEvaluationAggregate.cs" />
     <Compile Include="DealerEvaluationModel\Entities\AttributeVote.cs" />
     <Compile Include="DepartmentModel\DepartmentAggregate.cs" />
+    <Compile Include="DomainExtensions.cs" />
+    <Compile Include="GlobalValueObjects.cs" />
+    <Compile Include="IUserEvent.cs" />
+    <Compile Include="ModuleModel\AssesmentModule.cs" />
     <Compile Include="ModuleModel\AssesmentModuleAggregate.cs" />
+    <Compile Include="ModuleModel\Commands\CreateAssesmentModuleCommand.cs" />
     <Compile Include="ModuleModel\Entities\Checklist.cs" />
     <Compile Include="ModuleModel\Entities\EvalPeriodType.cs" />
+    <Compile Include="ModuleModel\Events\OnModuleCreated.cs" />
     <Compile Include="ModuleModel\ValueObjects\DealerStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

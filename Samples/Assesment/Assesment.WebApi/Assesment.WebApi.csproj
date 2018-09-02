@@ -55,6 +55,15 @@
     <Reference Include="Autofac.Integration.WebApi.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Autofac.WebApi2.Owin.4.0.0\lib\net45\Autofac.Integration.WebApi.Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="dbup-core, Version=4.1.0.0, Culture=neutral, PublicKeyToken=4b419c53bdfd4cbf, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\dbup-core.4.1.0\lib\net45\dbup-core.dll</HintPath>
+    </Reference>
+    <Reference Include="dbup-sqlserver, Version=4.1.0.0, Culture=neutral, PublicKeyToken=4b419c53bdfd4cbf, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\dbup-sqlserver.4.1.0\lib\net35\dbup-sqlserver.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -66,6 +75,12 @@
     </Reference>
     <Reference Include="EventFlow.Autofac, Version=0.64.3598.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\EventFlow.Autofac.0.64.3598\lib\net451\EventFlow.Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="EventFlow.MsSql, Version=0.64.3598.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EventFlow.MsSql.0.64.3598\lib\net451\EventFlow.MsSql.dll</HintPath>
+    </Reference>
+    <Reference Include="EventFlow.Sql, Version=0.64.3598.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EventFlow.Sql.0.64.3598\lib\net451\EventFlow.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -180,6 +195,18 @@
     <ProjectReference Include="..\..\..\Presentation\Nop.WebApi.Framework\Nop.WebApi.Framework.csproj">
       <Project>{299d524e-876d-43dd-ae11-51e9855698b8}</Project>
       <Name>Nop.WebApi.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Assesment.Domain\Assesment.Domain.csproj">
+      <Project>{2eec8653-0720-449b-a244-8cc96e64caaa}</Project>
+      <Name>Assesment.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Assesment.Queries\Assesment.Queries.csproj">
+      <Project>{4a79c168-0493-4977-9b9f-e0254d4126cc}</Project>
+      <Name>Assesment.Queries</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Assesment.Services\Assesment.Services.csproj">
+      <Project>{a6fff149-1017-42d7-9988-e4df9983a9f9}</Project>
+      <Name>Assesment.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

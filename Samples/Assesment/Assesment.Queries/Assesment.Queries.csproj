@@ -64,7 +64,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Module\AssesmentModuleReadModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryExtensions.cs" />
+    <Compile Include="SqlReadModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
