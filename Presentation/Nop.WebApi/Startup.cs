@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Autofac.Integration.WebApi;
 using Microsoft.Owin;
 using Nop.Core.Infrastructure;
 using Nop.Services.Logging;
@@ -24,10 +25,15 @@ namespace Nop.WebApi
             // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=316888
             ConfigureAuth(app);
 
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-
             EngineContext.Initialize(false);
 
+            HttpConfiguration config = GlobalConfiguration.Configuration;
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(EngineContext.Current.ContainerManager.Container);
+
+            WebApiConfig.Register(config);
+
+            app.UseAutofacWebApi(config);
+            app.UseWebApi(config);
 
             //log application start
             try
@@ -40,6 +46,8 @@ namespace Nop.WebApi
             {
                 //don't throw new exception if occurs
             }
+
+            config.EnsureInitialized();
         }
     }
 }

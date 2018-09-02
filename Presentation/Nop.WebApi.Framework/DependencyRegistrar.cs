@@ -44,25 +44,25 @@ namespace Nop.WebApi.Framework
         public virtual void Register(ContainerBuilder builder, ITypeFinder typeFinder, NopConfig config)
         {
             //HTTP context and other related stuff
-            //builder.Register(c =>
-            //    //register FakeHttpContext when HttpContext is not available
-            //    HttpContext.Current != null ?
-            //    (new HttpContextWrapper(HttpContext.Current) as HttpContextBase) :
-            //    (new FakeHttpContext("~/") as HttpContextBase))
-            //    .As<HttpContextBase>()
-            //    .InstancePerLifetimeScope();
-            //builder.Register(c => c.Resolve<HttpContextBase>().Request)
-            //    .As<HttpRequestBase>()
-            //    .InstancePerLifetimeScope();
-            //builder.Register(c => c.Resolve<HttpContextBase>().Response)
-            //    .As<HttpResponseBase>()
-            //    .InstancePerLifetimeScope();
-            //builder.Register(c => c.Resolve<HttpContextBase>().Server)
-            //    .As<HttpServerUtilityBase>()
-            //    .InstancePerLifetimeScope();
-            //builder.Register(c => c.Resolve<HttpContextBase>().Session)
-            //    .As<HttpSessionStateBase>()
-            //    .InstancePerLifetimeScope();
+            builder.Register(c =>
+                //register FakeHttpContext when HttpContext is not available
+                HttpContext.Current != null ?
+                (new HttpContextWrapper(HttpContext.Current) as HttpContextBase) :
+                (new FakeHttpContext("~/") as HttpContextBase))
+                .As<HttpContextBase>()
+                .InstancePerLifetimeScope();
+            builder.Register(c => c.Resolve<HttpContextBase>().Request)
+                .As<HttpRequestBase>()
+                .InstancePerLifetimeScope();
+            builder.Register(c => c.Resolve<HttpContextBase>().Response)
+                .As<HttpResponseBase>()
+                .InstancePerLifetimeScope();
+            builder.Register(c => c.Resolve<HttpContextBase>().Server)
+                .As<HttpServerUtilityBase>()
+                .InstancePerLifetimeScope();
+            builder.Register(c => c.Resolve<HttpContextBase>().Session)
+                .As<HttpSessionStateBase>()
+                .InstancePerLifetimeScope();
 
             //web helper
             builder.RegisterType<WebHelper>().As<IWebHelper>().InstancePerLifetimeScope();
@@ -73,11 +73,6 @@ namespace Nop.WebApi.Framework
             //controllers
             builder.RegisterApiControllers(typeFinder.GetAssemblies().ToArray());
 
-            // OPTIONAL: Register the Autofac filter provider.
-            builder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);
-
-            // OPTIONAL: Register the Autofac model binder provider.
-            //builder.RegisterWebApiModelBinderProvider();
 
             //data layer
             var dataSettingsManager = new DataSettingsManager();

@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
-using System.Web.Mvc;
-using Autofac;
+﻿using Autofac;
 using Autofac.Integration.Mvc;
-using Autofac.Integration.WebApi;
 using AutoMapper;
 using Nop.Core.Configuration;
 using Nop.Core.Infrastructure.DependencyManagement;
 using Nop.Core.Infrastructure.Mapper;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace Nop.Core.Infrastructure
 {
@@ -72,9 +70,6 @@ namespace Nop.Core.Infrastructure
 
             //set dependency resolver
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-
-            // Set the dependency resolver to be Autofac.
-            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
 
         /// <summary>
