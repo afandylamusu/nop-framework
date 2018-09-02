@@ -72,5 +72,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Assesment.Domain\Assesment.Domain.csproj">
+      <Project>{2EEC8653-0720-449B-A244-8CC96E64CAAA}</Project>
+      <Name>Assesment.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

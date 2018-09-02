@@ -5,4 +5,9 @@ namespace Assesment.Domain
     {
         string User {get;set;}
     }
+
+    public class UserEvent : IUserEvent
+    {
+        public string User { get; set; }
+    }
 }

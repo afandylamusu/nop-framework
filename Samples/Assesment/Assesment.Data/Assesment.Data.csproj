@@ -49,9 +49,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssesmentDbContext.cs" />
+    <Compile Include="Mapping\AssesmentModuleReadModelMap.cs" />
     <Compile Include="Migrations\201809020222398_Initial.cs" />
     <Compile Include="Migrations\201809020222398_Initial.Designer.cs">
       <DependentUpon>201809020222398_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809020721055_AssesmentModuleReadModel_Create.cs" />
+    <Compile Include="Migrations\201809020721055_AssesmentModuleReadModel_Create.Designer.cs">
+      <DependentUpon>201809020721055_AssesmentModuleReadModel_Create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809020729574_AssesmentModuleReadModel_AlterAdd_Code.cs" />
+    <Compile Include="Migrations\201809020729574_AssesmentModuleReadModel_AlterAdd_Code.Designer.cs">
+      <DependentUpon>201809020729574_AssesmentModuleReadModel_AlterAdd_Code.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809020730454_AssesmentModuleReadModel_AlterModify_Code.cs" />
+    <Compile Include="Migrations\201809020730454_AssesmentModuleReadModel_AlterModify_Code.Designer.cs">
+      <DependentUpon>201809020730454_AssesmentModuleReadModel_AlterModify_Code.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +74,10 @@
       <Project>{CCD7F2C9-6A2C-4CF0-8E89-076B8FC0F144}</Project>
       <Name>Nop.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Assesment.Queries\Assesment.Queries.csproj">
+      <Project>{4A79C168-0493-4977-9B9F-E0254D4126CC}</Project>
+      <Name>Assesment.Queries</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -69,6 +86,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809020222398_Initial.resx">
       <DependentUpon>201809020222398_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809020721055_AssesmentModuleReadModel_Create.resx">
+      <DependentUpon>201809020721055_AssesmentModuleReadModel_Create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809020729574_AssesmentModuleReadModel_AlterAdd_Code.resx">
+      <DependentUpon>201809020729574_AssesmentModuleReadModel_AlterAdd_Code.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809020730454_AssesmentModuleReadModel_AlterModify_Code.resx">
+      <DependentUpon>201809020730454_AssesmentModuleReadModel_AlterModify_Code.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

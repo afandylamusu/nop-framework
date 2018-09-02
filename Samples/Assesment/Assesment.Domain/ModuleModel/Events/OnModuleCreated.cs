@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Assesment.Domain.ModuleModel.Events
 {
-    public class OnModuleCreated : BaseAggregateEvent<AssesmentModuleAggregate, AssesmentModuleId>
+    public class OnAssesmentModuleCreated : BaseAggregateEvent<AssesmentModuleAggregate, AssesmentModuleId>
     {
-        public OnModuleCreated(AssesmentModule assesmentModule)
+        public OnAssesmentModuleCreated(AssesmentModule assesmentModule)
         {
             AssesmentModule = assesmentModule;
         }

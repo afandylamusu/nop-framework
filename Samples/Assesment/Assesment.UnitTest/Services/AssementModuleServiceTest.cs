@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Assesment.Domain;
 using Assesment.Domain.ModuleModel;
@@ -19,7 +20,7 @@ namespace Assesment.UnitTest
         public async Task CreateModule()
         {
             
-            AssesmentModuleId id = await Sut.CreateModuleAsync(new Name("HSNSI"), new Code("HSLSLS"));
+            AssesmentModuleId id = await Sut.CreateModuleAsync(new Name("HSNSI"), new Code("HSLSLS"), CancellationToken.None);
         }
     }
 }

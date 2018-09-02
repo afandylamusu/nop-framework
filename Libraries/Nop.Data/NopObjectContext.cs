@@ -22,7 +22,7 @@ namespace Nop.Data
 
         }
 
-        private static string GetConnectionString()
+        protected static string GetConnectionString()
         {
             return DataSettings.Current.DataConnectionString;
         }
@@ -43,7 +43,10 @@ namespace Nop.Data
             //System.Type configType = typeof(LanguageMap);   //any of your configuration classes here
             //var typesToRegister = Assembly.GetAssembly(configType).GetTypes()
 
-            var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
+            var types = this.GetType().Assembly.GetTypes().ToList();
+            types.AddRange(Assembly.GetExecutingAssembly().GetTypes());
+
+            var typesToRegister = types
             .Where(type => !String.IsNullOrEmpty(type.Namespace))
             .Where(type => type.BaseType != null && type.BaseType.IsGenericType &&
                 type.BaseType.GetGenericTypeDefinition() == typeof(NopEntityTypeConfiguration<>));

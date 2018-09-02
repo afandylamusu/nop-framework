@@ -184,6 +184,10 @@
       <Project>{6BDA8332-939F-45B7-A25E-7A797260AE59}</Project>
       <Name>Nop.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\Nop.Data\Nop.Data.csproj">
+      <Project>{CCD7F2C9-6A2C-4CF0-8E89-076B8FC0F144}</Project>
+      <Name>Nop.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Libraries\Nop.Domain\Nop.Domain.csproj">
       <Project>{698FF728-93B9-48C9-99C0-0AA1C909F420}</Project>
       <Name>Nop.Domain</Name>
@@ -195,6 +199,10 @@
     <ProjectReference Include="..\..\..\Presentation\Nop.WebApi.Framework\Nop.WebApi.Framework.csproj">
       <Project>{299d524e-876d-43dd-ae11-51e9855698b8}</Project>
       <Name>Nop.WebApi.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Assesment.Data\Assesment.Data.csproj">
+      <Project>{7936B123-4825-4E3E-8B7F-D7030BEBA541}</Project>
+      <Name>Assesment.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Assesment.Domain\Assesment.Domain.csproj">
       <Project>{2eec8653-0720-449b-a244-8cc96e64caaa}</Project>
