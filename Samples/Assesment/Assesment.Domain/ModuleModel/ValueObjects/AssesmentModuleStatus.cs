@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assesment.Domain.AttributeModel.Entities
+namespace Assesment.Domain.ModuleModel.ValueObjects
 {
-    class ScoreOption
+    public enum AssesmentModuleStatus
     {
+        Draft = 1
     }
 }

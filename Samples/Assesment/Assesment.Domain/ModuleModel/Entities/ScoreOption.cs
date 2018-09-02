@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assesment.Domain.AttributeModel.ValueObjects
+namespace Assesment.Domain.ModuleModel.Entities
 {
-    class ScoreOptionRule
+    class ScoreOption
     {
     }
 }

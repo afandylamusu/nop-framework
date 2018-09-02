@@ -1,4 +1,5 @@
-﻿using Assesment.Domain.ModuleModel.Events;
+﻿using Assesment.Domain.ModuleModel.Entities;
+using Assesment.Domain.ModuleModel.Events;
 using EventFlow.Aggregates;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,12 @@ namespace Assesment.Domain.ModuleModel.States
 {
     public class AssesmentModuleState : AggregateState<AssesmentModuleAggregate, AssesmentModuleId, AssesmentModuleState>,
         IApply<OnAssesmentModuleCreated>,
-        IApply<OnAssesmentModuleUpdated>
+        IApply<OnAssesmentModuleUpdated>,
+        IApply<OnAssesmentChecklistAdded>
     {
         public Code Code { get; private set; }
         public Name ModuleName { get; private set; }
+        public IReadOnlyList<AssesmentChecklist> Checklists { get; private set; }
 
         public void Apply(OnAssesmentModuleCreated aggregateEvent)
         {
@@ -25,6 +28,19 @@ namespace Assesment.Domain.ModuleModel.States
         {
             Code = aggregateEvent.AssesmentModule.Code;
             ModuleName = aggregateEvent.AssesmentModule.Name;
+        }
+
+        public void Apply(OnAssesmentChecklistAdded aggregateEvent)
+        {
+            if (Checklists == null)
+            {
+                Checklists = new List<AssesmentChecklist>();
+            }
+
+            var list = Checklists.ToList();
+            list.Add(aggregateEvent.AssesmentChecklist);
+
+            Checklists = list;
         }
     }
 }

@@ -1,3 +1,4 @@
+using EventFlow.MsSql.ReadStores.Attributes;
 using System;
 
 namespace Nop.Domain
@@ -10,6 +11,7 @@ namespace Nop.Domain
         /// <summary>
         /// Gets or sets the entity identifier
         /// </summary>
+        [MsSqlReadModelIgnoreColumn]
         public int Id { get; set; }
 
         public override bool Equals(object obj)

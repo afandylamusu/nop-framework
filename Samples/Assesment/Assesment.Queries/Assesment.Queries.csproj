@@ -40,6 +40,12 @@
     <Reference Include="dbup-sqlserver, Version=4.1.0.0, Culture=neutral, PublicKeyToken=4b419c53bdfd4cbf, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\dbup-sqlserver.4.1.0\lib\net35\dbup-sqlserver.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="EventFlow, Version=0.64.3598.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\EventFlow.0.64.3598\lib\net451\EventFlow.dll</HintPath>
     </Reference>
@@ -49,8 +55,8 @@
     <Reference Include="EventFlow.Sql, Version=0.64.3598.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\EventFlow.Sql.0.64.3598\lib\net451\EventFlow.Sql.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -64,15 +70,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Module\AssesmentChecklistReadModel.cs" />
     <Compile Include="Module\AssesmentModuleReadModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryExtensions.cs" />
     <Compile Include="SqlReadModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Libraries\Nop.Data\Nop.Data.csproj">
+      <Project>{CCD7F2C9-6A2C-4CF0-8E89-076B8FC0F144}</Project>
+      <Name>Nop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\Nop.Domain\Nop.Domain.csproj">
+      <Project>{698ff728-93b9-48c9-99c0-0aa1c909f420}</Project>
+      <Name>Nop.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Assesment.Domain\Assesment.Domain.csproj">
       <Project>{2EEC8653-0720-449B-A244-8CC96E64CAAA}</Project>
       <Name>Assesment.Domain</Name>

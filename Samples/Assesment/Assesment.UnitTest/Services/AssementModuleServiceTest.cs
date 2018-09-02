@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Assesment.Domain;
 using Assesment.Domain.ModuleModel;
+using Assesment.Domain.ModuleModel.Entities;
 using Assesment.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -26,6 +27,12 @@ namespace Assesment.UnitTest
         public async Task EditModule()
         {
             AssesmentModuleId id = await Sut.EditModuleAsync(new AssesmentModuleId("assesmentmodule-64d11ae0-4d1e-443d-a027-2f894bd8f0fb"), new Name("Test Module 2"), CancellationToken.None);
+        }
+
+        [TestMethod]
+        public async Task CreateCheckList()
+        {
+            AssesmentChecklistId id = await Sut.CreateChecklistAsync(new AssesmentModuleId("assesmentmodule-64d11ae0-4d1e-443d-a027-2f894bd8f0fb"), new Name("Check list 1"), CancellationToken.None);
         }
     }
 }

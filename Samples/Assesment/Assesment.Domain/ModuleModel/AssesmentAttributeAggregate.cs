@@ -3,7 +3,7 @@ using EventFlow.Core;
 using EventFlow.ValueObjects;
 using Newtonsoft.Json;
 
-namespace Assesment.Domain.AttributeModel
+namespace Assesment.Domain.ModuleModel
 {
     [JsonConverter(typeof(SingleValueObjectConverter))]
     public class AssesmentAttributeId : Identity<AssesmentAttributeId>

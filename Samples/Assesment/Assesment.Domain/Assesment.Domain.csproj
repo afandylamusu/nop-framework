@@ -31,11 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="EventFlow, Version=0.64.3598.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\EventFlow.0.64.3598\lib\net451\EventFlow.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,13 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttributeModel\AssesmentAttribute.cs" />
-    <Compile Include="AttributeModel\AssesmentAttributeAggregate.cs" />
-    <Compile Include="AttributeModel\ValueObjects\IntextStatus.cs" />
-    <Compile Include="AttributeModel\Entities\ScoreOption.cs" />
-    <Compile Include="AttributeModel\ValueObjects\ScoreOptionRule.cs" />
-    <Compile Include="AttributeModel\ValueObjects\ScoreOptionValue.cs" />
-    <Compile Include="BaseAggregateEvent.cs" />
+    <Compile Include="ModuleModel\AssesmentAttribute.cs" />
+    <Compile Include="ModuleModel\AssesmentAttributeAggregate.cs" />
+    <Compile Include="ModuleModel\Commands\AddAssesmentChecklistCommand.cs" />
+    <Compile Include="ModuleModel\Events\OnAssesmentChecklistAdded.cs" />
+    <Compile Include="ModuleModel\ValueObjects\AssesmentModuleStatus.cs" />
+    <Compile Include="ModuleModel\ValueObjects\IntextStatus.cs" />
+    <Compile Include="ModuleModel\Entities\ScoreOption.cs" />
+    <Compile Include="ModuleModel\ValueObjects\ScoreOptionRule.cs" />
+    <Compile Include="ModuleModel\ValueObjects\ScoreOptionValue.cs" />
+    <Compile Include="BaseAggregate.cs" />
     <Compile Include="DealerEvaluationModel\DealerEvaluationAggregate.cs" />
     <Compile Include="DealerEvaluationModel\Entities\AttributeVote.cs" />
     <Compile Include="DepartmentModel\DepartmentAggregate.cs" />
@@ -65,7 +71,7 @@
     <Compile Include="ModuleModel\AssesmentModuleAggregate.cs" />
     <Compile Include="ModuleModel\Commands\CreateAssesmentModuleCommand.cs" />
     <Compile Include="ModuleModel\Commands\UpdateAssesmentModuleCommand.cs" />
-    <Compile Include="ModuleModel\Entities\Checklist.cs" />
+    <Compile Include="ModuleModel\Entities\AssesmentChecklist.cs" />
     <Compile Include="ModuleModel\Entities\EvalPeriodType.cs" />
     <Compile Include="ModuleModel\Events\OnAssesmentModuleUpdated.cs" />
     <Compile Include="ModuleModel\Events\OnModuleCreated.cs" />
@@ -74,12 +80,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AttributeModel\Commands\" />
+    <Folder Include="AttributeModel\Entities\" />
     <Folder Include="AttributeModel\Events\" />
+    <Folder Include="AttributeModel\ValueObjects\" />
     <Folder Include="DealerModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Libraries\Nop.Core\Nop.Core.csproj">
+      <Project>{6BDA8332-939F-45B7-A25E-7A797260AE59}</Project>
+      <Name>Nop.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

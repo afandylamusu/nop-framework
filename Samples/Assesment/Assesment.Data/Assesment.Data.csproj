@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssesmentDbContext.cs" />
+    <Compile Include="Mapping\AssesmentChecklistReadModelMap.cs" />
     <Compile Include="Mapping\AssesmentModuleReadModelMap.cs" />
     <Compile Include="Migrations\201809020222398_Initial.cs" />
     <Compile Include="Migrations\201809020222398_Initial.Designer.cs">
@@ -66,6 +67,10 @@
     <Compile Include="Migrations\201809020730454_AssesmentModuleReadModel_AlterModify_Code.Designer.cs">
       <DependentUpon>201809020730454_AssesmentModuleReadModel_AlterModify_Code.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809021417139_AssesmentChecklistReadModel_Create.cs" />
+    <Compile Include="Migrations\201809021417139_AssesmentChecklistReadModel_Create.Designer.cs">
+      <DependentUpon>201809021417139_AssesmentChecklistReadModel_Create.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -73,6 +78,10 @@
     <ProjectReference Include="..\..\..\Libraries\Nop.Data\Nop.Data.csproj">
       <Project>{CCD7F2C9-6A2C-4CF0-8E89-076B8FC0F144}</Project>
       <Name>Nop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\Nop.Domain\Nop.Domain.csproj">
+      <Project>{698ff728-93b9-48c9-99c0-0aa1c909f420}</Project>
+      <Name>Nop.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Assesment.Queries\Assesment.Queries.csproj">
       <Project>{4A79C168-0493-4977-9B9F-E0254D4126CC}</Project>
@@ -95,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809020730454_AssesmentModuleReadModel_AlterModify_Code.resx">
       <DependentUpon>201809020730454_AssesmentModuleReadModel_AlterModify_Code.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809021417139_AssesmentChecklistReadModel_Create.resx">
+      <DependentUpon>201809021417139_AssesmentChecklistReadModel_Create.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
