@@ -14,25 +14,28 @@ namespace Assesment.WebApi
     {
         public void Configuration(IAppBuilder app)
         {
-            // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=316888
-            ConfigureAuth(app);
-
-            EngineContext.Initialize(false);
-
-            HttpConfiguration config = GlobalConfiguration.Configuration;
-            config.DependencyResolver = new AutofacWebApiDependencyResolver(EngineContext.Current.ContainerManager.Container);
-
-            WebApiConfig.Register(config);
-
-            app.UseAutofacWebApi(config);
-            app.UseWebApi(config);
-
             //log application start
             try
             {
+                // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=316888
+                ConfigureAuth(app);
+
+                EngineContext.Initialize(false);
+
+                HttpConfiguration config = GlobalConfiguration.Configuration;
+                config.DependencyResolver = new AutofacWebApiDependencyResolver(EngineContext.Current.ContainerManager.Container);
+
+                WebApiConfig.Register(config);
+
+                app.UseAutofacWebApi(config);
+                app.UseWebApi(config);
+
                 //log
                 var logger = EngineContext.Current.Resolve<ILogger>();
                 logger.Information("Application started", null, null);
+
+                config.EnsureInitialized();
+
             }
             catch (Exception)
             {

@@ -11,7 +11,7 @@ namespace Assesment.WebApi.Insfrastructure
 {
     public class DependencyRegistrar : IDependencyRegistrar
     {
-        public int Order => 2;
+        public int Order => 1;
 
         public void Register(ContainerBuilder builder, ITypeFinder typeFinder, NopConfig config)
         {

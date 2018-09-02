@@ -39,8 +39,8 @@ namespace Nop.WebApi
             config.EnableSwagger(c =>
             {
                 c.SingleApiVersion("v1", "Web API");
-                var doc = GetXmlCommentsPath();
-                c.IncludeXmlComments(doc);
+                //var doc = GetXmlCommentsPath();
+                //c.IncludeXmlComments(doc);
             }).EnableSwaggerUi();
 
             config.Routes.MapHttpRoute(
