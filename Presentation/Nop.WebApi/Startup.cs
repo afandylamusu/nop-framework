@@ -47,7 +47,6 @@ namespace Nop.WebApi
                 //don't throw new exception if occurs
             }
 
-            config.EnsureInitialized();
         }
     }
 }
