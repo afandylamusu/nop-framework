@@ -3,17 +3,16 @@ using Nop.Data.Mapping;
 
 namespace Assesment.Data.Mapping
 {
-    public class AssesmentChecklistReadModelMap : NopEntityTypeConfiguration<AssesmentChecklistReadModel>
+    public class AssesmentAttributeReadModelMap : NopEntityTypeConfiguration<AssesmentAttributeReadModel>
     {
-        public AssesmentChecklistReadModelMap()
+        public AssesmentAttributeReadModelMap()
         {
-            this.ToTable("ReadModel-AssesmentChecklist");
+            this.ToTable("ReadModel-AssesmentAttribute");
             this.ApplySqlModelConfig();
 
             this.Property(p => p.Name).HasMaxLength(255).IsRequired();
             this.Property(p => p.Code).HasMaxLength(64).IsRequired();
-            this.Property(p => p.ModuleId).HasMaxLength(255).IsRequired();
-
+            this.Property(p => p.ChecklistId).HasMaxLength(255).IsRequired();
         }
     }
 }

@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssesmentDbContext.cs" />
+    <Compile Include="Mapping\AssesmentAttributeReadModelMap.cs" />
     <Compile Include="Mapping\AssesmentChecklistReadModelMap.cs" />
     <Compile Include="Mapping\AssesmentModuleReadModelMap.cs" />
     <Compile Include="Migrations\201809020222398_Initial.cs" />
@@ -70,6 +71,14 @@
     <Compile Include="Migrations\201809021417139_AssesmentChecklistReadModel_Create.cs" />
     <Compile Include="Migrations\201809021417139_AssesmentChecklistReadModel_Create.Designer.cs">
       <DependentUpon>201809021417139_AssesmentChecklistReadModel_Create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809022342567_AssesmentChecklistReadModelMap_AlterAdd_Code.cs" />
+    <Compile Include="Migrations\201809022342567_AssesmentChecklistReadModelMap_AlterAdd_Code.Designer.cs">
+      <DependentUpon>201809022342567_AssesmentChecklistReadModelMap_AlterAdd_Code.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809030037022_AssesmentAttributeReadModel_Create.cs" />
+    <Compile Include="Migrations\201809030037022_AssesmentAttributeReadModel_Create.Designer.cs">
+      <DependentUpon>201809030037022_AssesmentAttributeReadModel_Create.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,6 +116,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809021417139_AssesmentChecklistReadModel_Create.resx">
       <DependentUpon>201809021417139_AssesmentChecklistReadModel_Create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809022342567_AssesmentChecklistReadModelMap_AlterAdd_Code.resx">
+      <DependentUpon>201809022342567_AssesmentChecklistReadModelMap_AlterAdd_Code.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809030037022_AssesmentAttributeReadModel_Create.resx">
+      <DependentUpon>201809030037022_AssesmentAttributeReadModel_Create.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

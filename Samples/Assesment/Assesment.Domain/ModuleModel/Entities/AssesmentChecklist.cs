@@ -1,27 +1,33 @@
-﻿using EventFlow.Core;
+﻿using System.Collections.Generic;
+using EventFlow.Core;
 using EventFlow.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using EventFlow.ValueObjects;
+using Newtonsoft.Json;
 
 namespace Assesment.Domain.ModuleModel.Entities
 {
-    public class AssesmentChecklist : Entity<AssesmentChecklistId>
-    {
-        public AssesmentChecklist(AssesmentChecklistId id, Name name) : base(id)
-        {
-            Name = name;
-        }
-
-        public Name Name { get; }
-    }
-
+    [JsonConverter(typeof(SingleValueObjectConverter))]
     public class AssesmentChecklistId : Identity<AssesmentChecklistId>
     {
         public AssesmentChecklistId(string value) : base(value)
         {
         }
     }
+
+    public class AssesmentChecklist : Entity<AssesmentChecklistId>
+    {
+        public AssesmentChecklist(AssesmentChecklistId id, Name name, Code code) : base(id)
+        {
+            Name = name;
+            Code = code;
+            Attributes = new List<AssesmentAttribute>();
+        }
+
+        public Name Name { get; }
+        public Code Code { get; }
+
+        public IReadOnlyList<AssesmentAttribute> Attributes { get; internal set; }
+    }
+
+    
 }

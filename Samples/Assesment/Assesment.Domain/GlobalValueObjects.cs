@@ -129,7 +129,25 @@ namespace Assesment.Domain
     [JsonConverter(typeof(SingleValueObjectConverter))]
     public class LastName : SingleValueObject<string>
     {
-        public LastName(string value) : base(value) { }
+        public LastName(string value) : base(value)
+        {
+            if (!string.IsNullOrEmpty(value) && value.Length < 3)
+            {
+                throw DomainError.With($"Invalid {this.GetType().PrettyPrint()} '{value}'");
+            }
+        }
+    }
+
+    [JsonConverter(typeof(SingleValueObjectConverter))]
+    public class Description : SingleValueObject<string>
+    {
+        public Description(string value) : base(value)
+        {
+            if (!string.IsNullOrEmpty(value) && value.Length <= 5)
+            {
+                throw DomainError.With($"Invalid {this.GetType().PrettyPrint()} '{value}'");
+            }
+        }
     }
 
     [JsonConverter(typeof(SingleValueObjectConverter))]

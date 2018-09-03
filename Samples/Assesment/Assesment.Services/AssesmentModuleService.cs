@@ -12,7 +12,8 @@ namespace Assesment.Services
     {
         Task<AssesmentModuleId> CreateModuleAsync(Name name, Code code, CancellationToken cancellationToken);
         Task<AssesmentModuleId> EditModuleAsync(AssesmentModuleId id, Name name, CancellationToken cancellationToken);
-        Task<AssesmentChecklistId> CreateChecklistAsync(AssesmentModuleId moduleId, Name name, CancellationToken cancellationToken);
+        Task<AssesmentChecklistId> AddChecklistAsync(AssesmentModuleId moduleId, Name name, Code code, CancellationToken cancellationToken);
+        Task<AssesmentAttributeId> AddAttributeAsync(AssesmentModuleId moduleId, AssesmentChecklistId checklistId, Name name, Code code, CancellationToken cancellationToken);
     }
 
     public class AssesmentModuleService : IAssesmentModuleService
@@ -24,10 +25,18 @@ namespace Assesment.Services
             _commandBus = commandBus;
         }
 
-        public async Task<AssesmentChecklistId> CreateChecklistAsync(AssesmentModuleId moduleId, Name name, CancellationToken cancellationToken)
+        public async Task<AssesmentAttributeId> AddAttributeAsync(AssesmentModuleId moduleId, AssesmentChecklistId checklistId, Name name, Code code, CancellationToken cancellationToken)
+        {
+            AssesmentAttributeId id = AssesmentAttributeId.New;
+            await _commandBus.PublishAsync(new AddAssesmentAttributeCommand(moduleId, checklistId, id, name, code), cancellationToken).ConfigureAwait(false);
+
+            return id;
+        }
+
+        public async Task<AssesmentChecklistId> AddChecklistAsync(AssesmentModuleId moduleId, Name name, Code code, CancellationToken cancellationToken)
         {
             AssesmentChecklistId id = AssesmentChecklistId.New;
-            await _commandBus.PublishAsync(new AddAssesmentChecklistCommand(moduleId, name), cancellationToken).ConfigureAwait(false);
+            await _commandBus.PublishAsync(new AddAssesmentChecklistCommand(moduleId, id, name, code), cancellationToken).ConfigureAwait(false);
 
             return id;
         }

@@ -13,7 +13,7 @@ namespace Nop.Core.Data
         /// </summary>
         public DataSettings()
         {
-            RawDataSettings=new Dictionary<string, string>();
+            RawDataSettings = new Dictionary<string, string>();
         }
 
         public static DataSettings Current => new DataSettingsManager().LoadSettings();

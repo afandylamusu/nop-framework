@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Assesment.Queries.Module
 {
-    public class AssesmentChecklistReadModel : SqlReadModel
+    public class AssesmentAttributeReadModel : SqlReadModel
     {
+        public string ChecklistId { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
-        public string ModuleId { get; set; }
     }
 }

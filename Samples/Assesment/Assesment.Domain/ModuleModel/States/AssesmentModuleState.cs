@@ -12,7 +12,8 @@ namespace Assesment.Domain.ModuleModel.States
     public class AssesmentModuleState : AggregateState<AssesmentModuleAggregate, AssesmentModuleId, AssesmentModuleState>,
         IApply<OnAssesmentModuleCreated>,
         IApply<OnAssesmentModuleUpdated>,
-        IApply<OnAssesmentChecklistAdded>
+        IApply<OnAssesmentChecklistAdded>,
+        IApply<OnAssesmentAttributeAdded>
     {
         public Code Code { get; private set; }
         public Name ModuleName { get; private set; }
@@ -41,6 +42,20 @@ namespace Assesment.Domain.ModuleModel.States
             list.Add(aggregateEvent.AssesmentChecklist);
 
             Checklists = list;
+        }
+
+        public void Apply(OnAssesmentAttributeAdded aggregateEvent)
+        {
+            if (Checklists == null)
+            {
+                Checklists = new List<AssesmentChecklist>();
+            }
+
+            var checklist = Checklists.FirstOrDefault(o => o.Id == aggregateEvent.AssesmentAttribute.ChecklistId);
+            var list = checklist.Attributes.ToList();
+            list.Add(aggregateEvent.AssesmentAttribute);
+
+            checklist.Attributes = list;
         }
     }
 }

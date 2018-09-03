@@ -11,10 +11,6 @@ using Nop.Core.Data;
 using Nop.Core.Infrastructure;
 using Nop.Core.Infrastructure.DependencyManagement;
 using Nop.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Assesment.WebApi.Insfrastructure
 {

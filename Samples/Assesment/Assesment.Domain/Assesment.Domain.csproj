@@ -51,9 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModuleModel\AssesmentAttribute.cs" />
-    <Compile Include="ModuleModel\AssesmentAttributeAggregate.cs" />
+    <Compile Include="ModuleModel\Commands\AddAssesmentAttributeCommand.cs" />
+    <Compile Include="ModuleModel\Entities\AssesmentAttribute.cs" />
     <Compile Include="ModuleModel\Commands\AddAssesmentChecklistCommand.cs" />
+    <Compile Include="ModuleModel\Events\OnAssesmentAttributeAdded.cs" />
     <Compile Include="ModuleModel\Events\OnAssesmentChecklistAdded.cs" />
     <Compile Include="ModuleModel\ValueObjects\AssesmentModuleStatus.cs" />
     <Compile Include="ModuleModel\ValueObjects\IntextStatus.cs" />
@@ -61,13 +62,13 @@
     <Compile Include="ModuleModel\ValueObjects\ScoreOptionRule.cs" />
     <Compile Include="ModuleModel\ValueObjects\ScoreOptionValue.cs" />
     <Compile Include="BaseAggregate.cs" />
-    <Compile Include="DealerEvaluationModel\DealerEvaluationAggregate.cs" />
-    <Compile Include="DealerEvaluationModel\Entities\AttributeVote.cs" />
+    <Compile Include="DealerReviewModel\DealerEvaluationAggregate.cs" />
+    <Compile Include="DealerReviewModel\Entities\AttributeVote.cs" />
     <Compile Include="DepartmentModel\DepartmentAggregate.cs" />
     <Compile Include="DomainExtensions.cs" />
     <Compile Include="GlobalValueObjects.cs" />
     <Compile Include="IUserEvent.cs" />
-    <Compile Include="ModuleModel\AssesmentModule.cs" />
+    <Compile Include="ModuleModel\Entities\AssesmentModule.cs" />
     <Compile Include="ModuleModel\AssesmentModuleAggregate.cs" />
     <Compile Include="ModuleModel\Commands\CreateAssesmentModuleCommand.cs" />
     <Compile Include="ModuleModel\Commands\UpdateAssesmentModuleCommand.cs" />
@@ -88,7 +89,6 @@
     <Folder Include="AttributeModel\Entities\" />
     <Folder Include="AttributeModel\Events\" />
     <Folder Include="AttributeModel\ValueObjects\" />
-    <Folder Include="DealerModel\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Libraries\Nop.Core\Nop.Core.csproj">

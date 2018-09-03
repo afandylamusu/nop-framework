@@ -9,7 +9,8 @@ namespace Assesment.Queries.Module
     public class AssesmentModuleReadModel : SqlReadModel,
       IAmReadModelFor<AssesmentModuleAggregate, AssesmentModuleId, OnAssesmentModuleCreated>,
       IAmReadModelFor<AssesmentModuleAggregate, AssesmentModuleId, OnAssesmentModuleUpdated>,
-      IAmReadModelFor<AssesmentModuleAggregate, AssesmentModuleId, OnAssesmentChecklistAdded>
+      IAmReadModelFor<AssesmentModuleAggregate, AssesmentModuleId, OnAssesmentChecklistAdded>,
+      IAmReadModelFor<AssesmentModuleAggregate, AssesmentModuleId, OnAssesmentAttributeAdded>
     {
         public string Name { get; set; }
         public string Code { get; set; }
@@ -55,7 +56,33 @@ namespace Assesment.Queries.Module
             {
                 ModuleId = domainEvent.AggregateIdentity.Value,
                 Name = domainEvent.AggregateEvent.AssesmentChecklist.Name.Value,
+                Code = domainEvent.AggregateEvent.AssesmentChecklist.Code.Value,
                 AggregateId = domainEvent.AggregateEvent.AssesmentChecklist.Id.Value,
+                CreatedTime = domainEvent.Timestamp,
+                CreatedBy = domainEvent.AggregateEvent.User,
+                LastAggregateSequenceNumber = 1
+            });
+
+            dbContext.SaveChanges();
+
+            this.AggregateId = domainEvent.AggregateIdentity.Value;
+            this.ModifiedTime = domainEvent.Timestamp;
+            this.ModifiedBy = domainEvent.AggregateEvent.User;
+            this.LastAggregateSequenceNumber = domainEvent.AggregateSequenceNumber;
+        }
+
+        public void Apply(IReadModelContext context, IDomainEvent<AssesmentModuleAggregate, AssesmentModuleId, OnAssesmentAttributeAdded> domainEvent)
+        {
+            var dbContext = context.Resolver.Resolve<IDbContext>();
+            var attributeSet = dbContext.Set<AssesmentAttributeReadModel>();
+
+            attributeSet.Add(new AssesmentAttributeReadModel
+            {
+                ChecklistId = domainEvent.AggregateEvent.AssesmentAttribute.ChecklistId.Value,
+                Name = domainEvent.AggregateEvent.AssesmentAttribute.Name.Value,
+                Code = domainEvent.AggregateEvent.AssesmentAttribute.Code.Value,
+
+                AggregateId = domainEvent.AggregateIdentity.Value,
                 CreatedTime = domainEvent.Timestamp,
                 CreatedBy = domainEvent.AggregateEvent.User,
                 LastAggregateSequenceNumber = 1

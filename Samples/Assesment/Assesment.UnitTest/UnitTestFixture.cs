@@ -14,6 +14,7 @@ using Autofac;
 using Nop.Core.Infrastructure;
 using Nop.Data;
 using System;
+using System.Data.Entity;
 //using Xunit;
 
 namespace Assesment.UnitTest
@@ -32,7 +33,7 @@ namespace Assesment.UnitTest
             EngineContext.Initialize(false);
 
             SP = EngineContext.Current.ContainerManager.Container;
-
+           
             var dbMigrate = SP.Resolve<EventFlow.MsSql.IMsSqlDatabaseMigrator>();
             EventFlow.MsSql.EventStores.EventFlowEventStoresMsSql.MigrateDatabase(dbMigrate);
         }

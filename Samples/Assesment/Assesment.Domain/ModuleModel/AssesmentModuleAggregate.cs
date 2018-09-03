@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using Assesment.Domain.ModuleModel.Entities;
+﻿using Assesment.Domain.ModuleModel.Entities;
 using Assesment.Domain.ModuleModel.Events;
 using Assesment.Domain.ModuleModel.States;
-using Autofac;
-using EventFlow.Aggregates;
 using EventFlow.Aggregates.ExecutionResults;
 using EventFlow.Core;
+using EventFlow.ValueObjects;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace Assesment.Domain.ModuleModel
 {
+    [JsonConverter(typeof(SingleValueObjectConverter))]
     public class AssesmentModuleId : Identity<AssesmentModuleId>
     {
         public AssesmentModuleId(string value) : base(value)
@@ -36,9 +37,15 @@ namespace Assesment.Domain.ModuleModel
             return ExecutionResult.Success();
         }
 
-        internal IExecutionResult AddChecklist(Name name)
+        internal IExecutionResult AddAttribute(AssesmentChecklistId checklistId, AssesmentAttributeId newId, Name name, Code code)
         {
-            Emit(new OnAssesmentChecklistAdded(new AssesmentChecklist(AssesmentChecklistId.New, name)) { User = UserEvent.User });
+            Emit(new OnAssesmentAttributeAdded(new AssesmentAttribute(newId, checklistId, name, code)) { User = UserEvent.User });
+            return ExecutionResult.Success();
+        }
+
+        internal IExecutionResult AddChecklist(AssesmentChecklistId newId, Name name, Code code)
+        {
+            Emit(new OnAssesmentChecklistAdded(new AssesmentChecklist(newId, name, code)) { User = UserEvent.User });
             return ExecutionResult.Success();
         }
 

@@ -17,22 +17,40 @@ namespace Assesment.UnitTest
             
         }
 
+        private Task<AssesmentModuleId> NewModule()
+        {
+            return Sut.CreateModuleAsync(new Name("HSNSI"), new Code("HSLSLS"), CancellationToken.None);
+        }
+
+        private Task<AssesmentChecklistId> NewChecklist(AssesmentModuleId moduleId = null)
+        {
+            return Sut.AddChecklistAsync(moduleId ?? NewModule().Result, new Name("Check list 1"), new Code("CHK1"), CancellationToken.None);
+        }
+
         [TestMethod]
         public async Task CreateModule()
         {
-            AssesmentModuleId id = await Sut.CreateModuleAsync(new Name("HSNSI"), new Code("HSLSLS"), CancellationToken.None);
+            AssesmentModuleId id = await NewModule();
         }
 
         [TestMethod]
         public async Task EditModule()
         {
-            AssesmentModuleId id = await Sut.EditModuleAsync(new AssesmentModuleId("assesmentmodule-64d11ae0-4d1e-443d-a027-2f894bd8f0fb"), new Name("Test Module 2"), CancellationToken.None);
+            AssesmentModuleId id = await Sut.EditModuleAsync(await NewModule(), new Name("Test Module 2"), CancellationToken.None);
         }
 
         [TestMethod]
-        public async Task CreateCheckList()
+        public async Task AddCheckList()
         {
-            AssesmentChecklistId id = await Sut.CreateChecklistAsync(new AssesmentModuleId("assesmentmodule-64d11ae0-4d1e-443d-a027-2f894bd8f0fb"), new Name("Check list 1"), CancellationToken.None);
+            AssesmentChecklistId id = await NewChecklist();
+        }
+
+        [TestMethod]
+        public async Task AddAttribute()
+        {
+            AssesmentModuleId moduleId = await NewModule();
+            AssesmentChecklistId checklistId = await NewChecklist(moduleId);
+            AssesmentAttributeId id = await Sut.AddAttributeAsync(moduleId, checklistId, new Name("Check list 1"), new Code("CHK1"), CancellationToken.None);
         }
     }
 }
