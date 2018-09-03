@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Assesment.Domain.ModuleModel;
+using Assesment.Domain.ModuleModel.Events;
+using EventFlow.ReadStores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

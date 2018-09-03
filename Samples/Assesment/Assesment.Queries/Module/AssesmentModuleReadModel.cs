@@ -3,6 +3,7 @@ using Assesment.Domain.ModuleModel.Events;
 using EventFlow.Aggregates;
 using EventFlow.ReadStores;
 using Nop.Data;
+using System.Linq;
 
 namespace Assesment.Queries.Module
 {
@@ -74,7 +75,13 @@ namespace Assesment.Queries.Module
         public void Apply(IReadModelContext context, IDomainEvent<AssesmentModuleAggregate, AssesmentModuleId, OnAssesmentAttributeAdded> domainEvent)
         {
             var dbContext = context.Resolver.Resolve<IDbContext>();
+            var checklistSet = dbContext.Set<AssesmentChecklistReadModel>();
             var attributeSet = dbContext.Set<AssesmentAttributeReadModel>();
+
+            var checklist = checklistSet.First(o => o.AggregateId == domainEvent.AggregateEvent.AssesmentAttribute.ChecklistId.Value);
+            checklist.ModifiedTime = domainEvent.Timestamp;
+            checklist.ModifiedBy = domainEvent.AggregateEvent.User;
+            checklist.LastAggregateSequenceNumber++;
 
             attributeSet.Add(new AssesmentAttributeReadModel
             {
