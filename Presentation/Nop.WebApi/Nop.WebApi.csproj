@@ -214,6 +214,10 @@
       <Project>{6bda8332-939f-45b7-a25e-7a797260ae59}</Project>
       <Name>Nop.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\Nop.Data\Nop.Data.csproj">
+      <Project>{ccd7f2c9-6a2c-4cf0-8e89-076b8fc0f144}</Project>
+      <Name>Nop.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Libraries\Nop.Domain\Nop.Domain.csproj">
       <Project>{698ff728-93b9-48c9-99c0-0aa1c909f420}</Project>
       <Name>Nop.Domain</Name>

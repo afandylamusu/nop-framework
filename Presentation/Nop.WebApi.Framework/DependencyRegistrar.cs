@@ -68,7 +68,7 @@ namespace Nop.WebApi.Framework
             builder.RegisterType<WebHelper>().As<IWebHelper>().InstancePerLifetimeScope();
 
             //work context
-            //builder.RegisterType</*WebWorkContext*/>().As<IWorkContext>().InstancePerLifetimeScope();
+            builder.RegisterType<WebApiWorkContext>().As<IWorkContext>().InstancePerLifetimeScope();
 
             //controllers
             builder.RegisterApiControllers(typeFinder.GetAssemblies().ToArray());
