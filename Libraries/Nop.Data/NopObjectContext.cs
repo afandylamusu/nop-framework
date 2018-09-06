@@ -46,7 +46,7 @@ namespace Nop.Data
             var types = this.GetType().Assembly.GetTypes().ToList();
             types.AddRange(Assembly.GetExecutingAssembly().GetTypes());
 
-            var typesToRegister = types
+            var typesToRegister = types.Distinct()
             .Where(type => !String.IsNullOrEmpty(type.Namespace))
             .Where(type => type.BaseType != null && type.BaseType.IsGenericType &&
                 type.BaseType.GetGenericTypeDefinition() == typeof(NopEntityTypeConfiguration<>));
