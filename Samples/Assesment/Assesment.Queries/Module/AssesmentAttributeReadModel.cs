@@ -8,7 +8,7 @@ namespace Assesment.Queries.Module
 {
     public class AssesmentAttributeReadModel : SqlReadModel
     {
-        public string ChecklistId { get; set; }
+        //public string ChecklistId { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
     }

@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Assesment.Domain;
 using Assesment.Domain.ModuleModel;
@@ -10,10 +11,11 @@ namespace Assesment.Services
 {
     public interface IAssesmentModuleService
     {
-        Task<AssesmentModuleId> CreateModuleAsync(Name name, Code code, CancellationToken cancellationToken);
+        Task<AssesmentModuleId> CreateModuleAsync(Name name, Code code, AssesmentModuleType type, CancellationToken cancellationToken);
         Task<AssesmentModuleId> EditModuleAsync(AssesmentModuleId id, Name name, CancellationToken cancellationToken);
         Task<AssesmentChecklistId> AddChecklistAsync(AssesmentModuleId moduleId, Name name, Code code, CancellationToken cancellationToken);
-        Task<AssesmentAttributeId> AddAttributeAsync(AssesmentModuleId moduleId, AssesmentChecklistId checklistId, Name name, Code code, CancellationToken cancellationToken);
+        Task<AssesmentAttributeId> AddAttributeAsync(AssesmentModuleId moduleId, Name name, Code code, CancellationToken cancellationToken);
+        Task<AssesmentChecklistId> AddChecklistAttributesAsync(AssesmentModuleId moduleId, AssesmentChecklistId checklistId, IEnumerable<AssesmentAttributeId> list, CancellationToken cancellationToken);
     }
 
     public class AssesmentModuleService : IAssesmentModuleService
@@ -25,10 +27,10 @@ namespace Assesment.Services
             _commandBus = commandBus;
         }
 
-        public async Task<AssesmentAttributeId> AddAttributeAsync(AssesmentModuleId moduleId, AssesmentChecklistId checklistId, Name name, Code code, CancellationToken cancellationToken)
+        public async Task<AssesmentAttributeId> AddAttributeAsync(AssesmentModuleId moduleId, Name name, Code code, CancellationToken cancellationToken)
         {
             AssesmentAttributeId id = AssesmentAttributeId.New;
-            await _commandBus.PublishAsync(new AddAssesmentAttributeCommand(moduleId, checklistId, id, name, code), cancellationToken).ConfigureAwait(false);
+            await _commandBus.PublishAsync(new AddAssesmentAttributeCommand(moduleId, id, name, code), cancellationToken).ConfigureAwait(false);
 
             return id;
         }
@@ -41,11 +43,16 @@ namespace Assesment.Services
             return id;
         }
 
-        public async Task<AssesmentModuleId> CreateModuleAsync(Name name, Code code, CancellationToken cancellationToken)
+        public Task<AssesmentChecklistId> AddChecklistAttributesAsync(AssesmentModuleId moduleId, AssesmentChecklistId checklistId, IEnumerable<AssesmentAttributeId> list, CancellationToken cancellationToken)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public async Task<AssesmentModuleId> CreateModuleAsync(Name name, Code code, AssesmentModuleType type, CancellationToken cancellationToken)
         {
             AssesmentModuleId id = AssesmentModuleId.New;
 
-            await _commandBus.PublishAsync(new CreateAssesmentModuleCommand(id, name, code), cancellationToken).ConfigureAwait(false);
+            await _commandBus.PublishAsync(new CreateAssesmentModuleCommand(id, name, code, type), cancellationToken).ConfigureAwait(false);
 
             return id;
         }

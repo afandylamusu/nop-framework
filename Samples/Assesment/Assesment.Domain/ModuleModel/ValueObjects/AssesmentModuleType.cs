@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Assesment.Domain.ModuleModel
 {
-    public enum AssesmentModuleStatus
+    public enum AssesmentModuleType
     {
-        Draft = 1
+        Regular = 1,
+        Routine
     }
 }

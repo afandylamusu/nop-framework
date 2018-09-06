@@ -57,6 +57,7 @@
     <Compile Include="ModuleModel\Events\OnAssesmentAttributeAdded.cs" />
     <Compile Include="ModuleModel\Events\OnAssesmentChecklistAdded.cs" />
     <Compile Include="ModuleModel\ValueObjects\AssesmentModuleStatus.cs" />
+    <Compile Include="ModuleModel\ValueObjects\AssesmentModuleType.cs" />
     <Compile Include="ModuleModel\ValueObjects\IntextStatus.cs" />
     <Compile Include="ModuleModel\Entities\ScoreOption.cs" />
     <Compile Include="ModuleModel\ValueObjects\ScoreOptionRule.cs" />

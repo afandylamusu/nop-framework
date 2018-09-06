@@ -80,6 +80,10 @@
     <Compile Include="Migrations\201809030037022_AssesmentAttributeReadModel_Create.Designer.cs">
       <DependentUpon>201809030037022_AssesmentAttributeReadModel_Create.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809061421448_AssesmentAttributeReadModel_AlterRemove_ChecklistId.cs" />
+    <Compile Include="Migrations\201809061421448_AssesmentAttributeReadModel_AlterRemove_ChecklistId.Designer.cs">
+      <DependentUpon>201809061421448_AssesmentAttributeReadModel_AlterRemove_ChecklistId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -123,6 +127,14 @@
     <EmbeddedResource Include="Migrations\201809030037022_AssesmentAttributeReadModel_Create.resx">
       <DependentUpon>201809030037022_AssesmentAttributeReadModel_Create.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809061421448_AssesmentAttributeReadModel_AlterRemove_ChecklistId.resx">
+      <DependentUpon>201809061421448_AssesmentAttributeReadModel_AlterRemove_ChecklistId.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Settings.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

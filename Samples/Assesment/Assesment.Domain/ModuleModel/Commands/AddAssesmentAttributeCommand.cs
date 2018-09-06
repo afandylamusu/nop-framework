@@ -12,15 +12,15 @@ namespace Assesment.Domain.ModuleModel.Commands
 {
     public class AddAssesmentAttributeCommand : Command<AssesmentModuleAggregate, AssesmentModuleId>
     {
-        public AddAssesmentAttributeCommand(AssesmentModuleId aggregateId, AssesmentChecklistId checklistId, AssesmentAttributeId newId, Name name, Code code) : base(aggregateId)
+        public AddAssesmentAttributeCommand(AssesmentModuleId aggregateId, AssesmentAttributeId newId, Name name, Code code) : base(aggregateId)
         {
-            ChecklistId = checklistId;
+            //ChecklistId = checklistId;
             NewId = newId;
             Name = name;
             Code = code;
         }
 
-        public AssesmentChecklistId ChecklistId { get; }
+        //public AssesmentChecklistId ChecklistId { get; }
         public AssesmentAttributeId NewId { get; }
         public Name Name { get; }
         public Code Code { get; }
@@ -30,7 +30,7 @@ namespace Assesment.Domain.ModuleModel.Commands
     {
         public override Task<IExecutionResult> ExecuteCommandAsync(AssesmentModuleAggregate aggregate, AddAssesmentAttributeCommand command, CancellationToken cancellationToken)
         {
-            IExecutionResult result = aggregate.AddAttribute(command.ChecklistId, command.NewId, command.Name, command.Code);
+            IExecutionResult result = aggregate.AddAttribute(command.NewId, command.Name, command.Code);
 
             return Task.FromResult(result);
         }

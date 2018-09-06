@@ -12,7 +12,7 @@ namespace Assesment.Data.Mapping
 
             this.Property(p => p.Name).HasMaxLength(255).IsRequired();
             this.Property(p => p.Code).HasMaxLength(64).IsRequired();
-            this.Property(p => p.ChecklistId).HasMaxLength(255).IsRequired();
+            //this.Property(p => p.ChecklistId).HasMaxLength(255).IsRequired();
         }
     }
 }

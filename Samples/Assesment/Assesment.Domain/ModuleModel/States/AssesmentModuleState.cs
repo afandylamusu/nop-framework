@@ -18,11 +18,15 @@ namespace Assesment.Domain.ModuleModel.States
         public Code Code { get; private set; }
         public Name ModuleName { get; private set; }
         public IReadOnlyList<AssesmentChecklist> Checklists { get; private set; }
+        public IReadOnlyList<AssesmentAttribute> Attributes { get; private set; }
+        public AssesmentModuleStatus ModuleStatus { get; private set; }
+        public AssesmentModuleType ModuleType { get; private set; }
 
         public void Apply(OnAssesmentModuleCreated aggregateEvent)
         {
             Code = aggregateEvent.AssesmentModule.Code;
             ModuleName = aggregateEvent.AssesmentModule.Name;
+            ModuleStatus = aggregateEvent.AssesmentModule.Status;
         }
 
         public void Apply(OnAssesmentModuleUpdated aggregateEvent)
@@ -46,16 +50,15 @@ namespace Assesment.Domain.ModuleModel.States
 
         public void Apply(OnAssesmentAttributeAdded aggregateEvent)
         {
-            if (Checklists == null)
+            if (Attributes == null)
             {
-                Checklists = new List<AssesmentChecklist>();
+                Attributes = new List<AssesmentAttribute>();
             }
 
-            var checklist = Checklists.FirstOrDefault(o => o.Id == aggregateEvent.AssesmentAttribute.ChecklistId);
-            var list = checklist.Attributes.ToList();
+            var list = Attributes.ToList();
             list.Add(aggregateEvent.AssesmentAttribute);
 
-            checklist.Attributes = list;
+            Attributes = list;
         }
     }
 }

@@ -25,8 +25,7 @@ namespace Assesment.Domain.ModuleModel.Entities
 
         public Name Name { get; }
         public Code Code { get; }
-
-        public IReadOnlyList<AssesmentAttribute> Attributes { get; internal set; }
+        public List<AssesmentAttribute> Attributes { get; }
     }
 
     

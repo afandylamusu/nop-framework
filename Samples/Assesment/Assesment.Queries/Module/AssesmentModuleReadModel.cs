@@ -75,17 +75,17 @@ namespace Assesment.Queries.Module
         public void Apply(IReadModelContext context, IDomainEvent<AssesmentModuleAggregate, AssesmentModuleId, OnAssesmentAttributeAdded> domainEvent)
         {
             var dbContext = context.Resolver.Resolve<IDbContext>();
-            var checklistSet = dbContext.Set<AssesmentChecklistReadModel>();
+            //var checklistSet = dbContext.Set<AssesmentChecklistReadModel>();
             var attributeSet = dbContext.Set<AssesmentAttributeReadModel>();
 
-            var checklist = checklistSet.First(o => o.AggregateId == domainEvent.AggregateEvent.AssesmentAttribute.ChecklistId.Value);
-            checklist.ModifiedTime = domainEvent.Timestamp;
-            checklist.ModifiedBy = domainEvent.AggregateEvent.User;
-            checklist.LastAggregateSequenceNumber++;
+            //var checklist = checklistSet.First(o => o.AggregateId == domainEvent.AggregateEvent.AssesmentAttribute.ChecklistId.Value);
+            //checklist.ModifiedTime = domainEvent.Timestamp;
+            //checklist.ModifiedBy = domainEvent.AggregateEvent.User;
+            //checklist.LastAggregateSequenceNumber++;
 
             attributeSet.Add(new AssesmentAttributeReadModel
             {
-                ChecklistId = domainEvent.AggregateEvent.AssesmentAttribute.ChecklistId.Value,
+                //ChecklistId = domainEvent.AggregateEvent.AssesmentAttribute.ChecklistId.Value,
                 Name = domainEvent.AggregateEvent.AssesmentAttribute.Name.Value,
                 Code = domainEvent.AggregateEvent.AssesmentAttribute.Code.Value,
 

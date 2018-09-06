@@ -1,11 +1,11 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Assesment.Domain;
+﻿using Assesment.Domain;
 using Assesment.Domain.ModuleModel;
 using Assesment.Domain.ModuleModel.Entities;
 using Assesment.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Assesment.UnitTest
 {
@@ -19,7 +19,7 @@ namespace Assesment.UnitTest
 
         private Task<AssesmentModuleId> NewModule()
         {
-            return Sut.CreateModuleAsync(new Name("HSNSI"), new Code("HSLSLS"), CancellationToken.None);
+            return Sut.CreateModuleAsync(new Name("HSNSI"), new Code("HSLSLS"), AssesmentModuleType.Regular, CancellationToken.None);
         }
 
         private Task<AssesmentChecklistId> NewChecklist(AssesmentModuleId moduleId = null)
@@ -49,8 +49,18 @@ namespace Assesment.UnitTest
         public async Task AddAttribute()
         {
             AssesmentModuleId moduleId = await NewModule();
+            //AssesmentChecklistId checklistId = await NewChecklist(moduleId);
+            AssesmentAttributeId id = await Sut.AddAttributeAsync(moduleId, new Name("Check list 1"), new Code("CHK1"), CancellationToken.None);
+        }
+
+        [TestMethod]
+        public async Task AddAttributeToChecklist()
+        {
+            AssesmentModuleId moduleId = await NewModule();
             AssesmentChecklistId checklistId = await NewChecklist(moduleId);
-            AssesmentAttributeId id = await Sut.AddAttributeAsync(moduleId, checklistId, new Name("Check list 1"), new Code("CHK1"), CancellationToken.None);
+            AssesmentChecklistId id = await Sut.AddChecklistAttributesAsync(moduleId, checklistId, new List<AssesmentAttributeId>() {
+                await Sut.AddAttributeAsync(moduleId, new Name("Check list 1"), new Code("CHK1"), CancellationToken.None)
+            }, CancellationToken.None);
         }
     }
 }

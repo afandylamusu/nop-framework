@@ -16,14 +16,14 @@ namespace Assesment.Domain.ModuleModel
 
     public class AssesmentAttribute : Entity<AssesmentAttributeId>
     {
-        public AssesmentAttribute(AssesmentAttributeId id, AssesmentChecklistId checklistId, Name name, Code code) : base(id)
+        public AssesmentAttribute(AssesmentAttributeId id, Name name, Code code) : base(id)
         {
-            ChecklistId = checklistId;
+            //ChecklistId = checklistId;
             Name = name;
             Code = code;
         }
 
-        public AssesmentChecklistId ChecklistId { get; }
+        //public AssesmentChecklistId ChecklistId { get; }
         public Name Name { get; }
         public Code Code { get; }
     }

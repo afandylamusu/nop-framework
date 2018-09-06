@@ -26,20 +26,23 @@ namespace Assesment.Domain.ModuleModel
         public Code Code => _state.Code;
         public IReadOnlyList<AssesmentChecklist> Checklists => _state.Checklists;
 
+        public AssesmentModuleType ModuleType => _state.ModuleType;
+        public AssesmentModuleStatus ModuleStatus => _state.ModuleStatus;
+
         public AssesmentModuleAggregate(AssesmentModuleId id) : base(id)
         {
             Register(_state);
         }
 
-        internal IExecutionResult Create(Name name, Code code)
+        internal IExecutionResult Create(Name name, Code code, AssesmentModuleType type)
         {
-            Emit(new OnAssesmentModuleCreated(new AssesmentModule(Id, name, code)) { User = UserEvent.User });
+            Emit(new OnAssesmentModuleCreated(new AssesmentModule(Id, name, code, type)) { User = UserEvent.User });
             return ExecutionResult.Success();
         }
 
-        internal IExecutionResult AddAttribute(AssesmentChecklistId checklistId, AssesmentAttributeId newId, Name name, Code code)
+        internal IExecutionResult AddAttribute(AssesmentAttributeId newId, Name name, Code code)
         {
-            Emit(new OnAssesmentAttributeAdded(new AssesmentAttribute(newId, checklistId, name, code)) { User = UserEvent.User });
+            Emit(new OnAssesmentAttributeAdded(new AssesmentAttribute(newId, name, code)) { User = UserEvent.User });
             return ExecutionResult.Success();
         }
 
@@ -51,7 +54,7 @@ namespace Assesment.Domain.ModuleModel
 
         internal IExecutionResult Update(Name name)
         {
-            Emit(new OnAssesmentModuleUpdated(new AssesmentModule(Id, name, this.Code)) { User = UserEvent.User });
+            Emit(new OnAssesmentModuleUpdated(new AssesmentModule(Id, name, this.Code, ModuleType)) { User = UserEvent.User });
             return ExecutionResult.Success();
         }
     }
